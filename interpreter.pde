@@ -65,7 +65,7 @@ class interpreter{
         //number num1 = popNum();
         //number num2 = popNum();
         //push(num1.numClass.cast(num1.number) - num2.numClass.cast(num2.number));
-        //push((Number)(num1.number) - (Number)(num2.number));
+        //push((int)(num1.number) - (int)(num2.number));
         return;
       
       case op.If://if
