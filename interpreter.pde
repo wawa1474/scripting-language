@@ -24,11 +24,11 @@ class interpreter{
   int interpret(){
     while(regPC < codeToRun.size()){
       Object ins = codeToRun.get(regPC);
-      //if(ins instanceof Integer){
-      //  println("op:" + opcodes[(int)ins].name);
-      //}else{
-      //  println("data:" + ins);
-      //}
+      if(ins instanceof Integer){
+        println("op:" + opcodes[(int)ins].name);
+      }else{
+        println("data:" + ins);
+      }
       regPC++;
       instructions((int)ins);
     }
@@ -62,6 +62,10 @@ class interpreter{
         var2 = popInt();
         var1 = popInt();
         push(var1 - var2);
+        //number num1 = popNum();
+        //number num2 = popNum();
+        //push(num1.numClass.cast(num1.number) - num2.numClass.cast(num2.number));
+        //push((Number)(num1.number) - (Number)(num2.number));
         return;
       
       case op.If://if
@@ -185,6 +189,11 @@ class interpreter{
   
   int popInt(){
     return (int)pop();
+  }
+  
+  number popNum(){
+    Object tmp = pop();
+    return new number(tmp, tmp.getClass());
   }
   
   String popString(){

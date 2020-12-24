@@ -35,9 +35,9 @@ ArrayList<Object> assemble(Object[] code_){
         output.add(tmp);
       }
     }else{
-      if(code_[i] instanceof Integer){
+      //if(code_[i] instanceof Integer){
         output.add(op.Push);
-      }
+      //}
       output.add(code_[i]);
     }
   }
