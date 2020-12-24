@@ -1,5 +1,10 @@
+final String errorMSG_NaN = "NaN";
+final int valTrue = 1;
+final int valFalse = 0;
+
 interface nClass{
-  int Int = 0,
+  int NAN = -1,
+  Int = 0,
   Float = 1,
   Long = 2,
   Double = 3,
@@ -68,7 +73,7 @@ int numClass(Object n_){
     return nClass.Short;
   }
   
-  return -1;//not a number?
+  return nClass.NAN;//not a number
 }
 //case nClass.Int:
 //case nClass.Float:
@@ -77,9 +82,133 @@ int numClass(Object n_){
 //case nClass.Byte:
 //case nClass.Char:
 //case nClass.Short:
+
+Object conditionCheck(Object num1_, Object num2_, String con_){
+  //Object var1 = pop();
+  //Object var2 = pop();
+  Object tmp = subNum(num1_, num2_);
+  int var1 = numClass(tmp);
+  
+  switch(con_){
+    case "<":
+      switch(var1){
+        case nClass.Int:
+          return((int)tmp > 0 ? valTrue : valFalse);
+        case nClass.Float:
+          return((float)tmp > 0 ? valTrue : valFalse);
+        case nClass.Long:
+          return((long)tmp > 0 ? valTrue : valFalse);
+        case nClass.Double:
+          return((double)tmp > 0 ? valTrue : valFalse);
+        case nClass.Byte:
+          return((byte)tmp > 0 ? valTrue : valFalse);
+        case nClass.Char:
+          return((char)tmp > 0 ? valTrue : valFalse);
+        case nClass.Short:
+          return((short)tmp > 0 ? valTrue : valFalse);
+      }
+      
+    case ">":
+      switch(var1){
+        case nClass.Int:
+          return((int)tmp < 0 ? valTrue : valFalse);
+        case nClass.Float:
+          return((float)tmp < 0 ? valTrue : valFalse);
+        case nClass.Long:
+          return((long)tmp < 0 ? valTrue : valFalse);
+        case nClass.Double:
+          return((double)tmp < 0 ? valTrue : valFalse);
+        case nClass.Byte:
+          return((byte)tmp < 0 ? valTrue : valFalse);
+        case nClass.Char:
+          return((char)tmp < 0 ? valTrue : valFalse);
+        case nClass.Short:
+          return((short)tmp < 0 ? valTrue : valFalse);
+      }
+      
+    case "==":
+      switch(var1){
+        case nClass.Int:
+          return((int)tmp == 0 ? valTrue : valFalse);
+        case nClass.Float:
+          return((float)tmp == 0 ? valTrue : valFalse);
+        case nClass.Long:
+          return((long)tmp == 0 ? valTrue : valFalse);
+        case nClass.Double:
+          return((double)tmp == 0 ? valTrue : valFalse);
+        case nClass.Byte:
+          return((byte)tmp == 0 ? valTrue : valFalse);
+        case nClass.Char:
+          return((char)tmp == 0 ? valTrue : valFalse);
+        case nClass.Short:
+          return((short)tmp == 0 ? valTrue : valFalse);
+      }
+      
+    case "!=":
+      switch(var1){
+        case nClass.Int:
+          return((int)tmp != 0 ? valTrue : valFalse);
+        case nClass.Float:
+          return((float)tmp != 0 ? valTrue : valFalse);
+        case nClass.Long:
+          return((long)tmp != 0 ? valTrue : valFalse);
+        case nClass.Double:
+          return((double)tmp != 0 ? valTrue : valFalse);
+        case nClass.Byte:
+          return((byte)tmp != 0 ? valTrue : valFalse);
+        case nClass.Char:
+          return((char)tmp != 0 ? valTrue : valFalse);
+        case nClass.Short:
+          return((short)tmp != 0 ? valTrue : valFalse);
+      }
+      
+    case "<=":
+      switch(var1){
+        case nClass.Int:
+          return((int)tmp >= 0 ? valTrue : valFalse);
+        case nClass.Float:
+          return((float)tmp >= 0 ? valTrue : valFalse);
+        case nClass.Long:
+          return((long)tmp >= 0 ? valTrue : valFalse);
+        case nClass.Double:
+          return((double)tmp >= 0 ? valTrue : valFalse);
+        case nClass.Byte:
+          return((byte)tmp >= 0 ? valTrue : valFalse);
+        case nClass.Char:
+          return((char)tmp >= 0 ? valTrue : valFalse);
+        case nClass.Short:
+          return((short)tmp >= 0 ? valTrue : valFalse);
+      }
+      
+    case ">=":
+      switch(var1){
+        case nClass.Int:
+          return((int)tmp <= 0 ? valTrue : valFalse);
+        case nClass.Float:
+          return((float)tmp <= 0 ? valTrue : valFalse);
+        case nClass.Long:
+          return((long)tmp <= 0 ? valTrue : valFalse);
+        case nClass.Double:
+          return((double)tmp <= 0 ? valTrue : valFalse);
+        case nClass.Byte:
+          return((byte)tmp <= 0 ? valTrue : valFalse);
+        case nClass.Char:
+          return((char)tmp <= 0 ? valTrue : valFalse);
+        case nClass.Short:
+          return((short)tmp <= 0 ? valTrue : valFalse);
+      }
+  }
+  
+  return errorMSG_NaN;//?
+}
+
 Object subNum(Object v1_, Object v2_){
   int var1 = numClass(v1_);
   int var2 = numClass(v2_);
+  
+  if(var1 == nClass.NAN || var2 == nClass.NAN){
+    return errorMSG_NaN;
+  }
   
   switch(var1){
     case nClass.Int:
@@ -210,6 +339,10 @@ Object addNum(Object v1_, Object v2_){
   int var1 = numClass(v1_);
   int var2 = numClass(v2_);
   
+  if(var1 == nClass.NAN || var2 == nClass.NAN){
+    return errorMSG_NaN;
+  }
+  
   switch(var1){
     case nClass.Int:
       switch(var2){
@@ -338,6 +471,10 @@ Object addNum(Object v1_, Object v2_){
 Object mulNum(Object v1_, Object v2_){
   int var1 = numClass(v1_);
   int var2 = numClass(v2_);
+  
+  if(var1 == nClass.NAN || var2 == nClass.NAN){
+    return errorMSG_NaN;
+  }
   
   switch(var1){
     case nClass.Int:
@@ -468,6 +605,10 @@ Object divNum(Object v1_, Object v2_){
   int var1 = numClass(v1_);
   int var2 = numClass(v2_);
   
+  if(var1 == nClass.NAN || var2 == nClass.NAN){
+    return errorMSG_NaN;
+  }
+  
   switch(var1){
     case nClass.Int:
       switch(var2){
@@ -596,6 +737,10 @@ Object divNum(Object v1_, Object v2_){
 Object modNum(Object v1_, Object v2_){
   int var1 = numClass(v1_);
   int var2 = numClass(v2_);
+  
+  if(var1 == nClass.NAN || var2 == nClass.NAN){
+    return errorMSG_NaN;
+  }
   
   switch(var1){
     case nClass.Int:
@@ -726,6 +871,10 @@ Object andNum(Object v1_, Object v2_){
   int var1 = numClass(v1_);
   int var2 = numClass(v2_);
   
+  if(var1 == nClass.NAN || var2 == nClass.NAN){
+    return errorMSG_NaN;
+  }
+  
   switch(var1){
     case nClass.Int:
       switch(var2){
@@ -854,6 +1003,10 @@ Object andNum(Object v1_, Object v2_){
 Object xorNum(Object v1_, Object v2_){
   int var1 = numClass(v1_);
   int var2 = numClass(v2_);
+  
+  if(var1 == nClass.NAN || var2 == nClass.NAN){
+    return errorMSG_NaN;
+  }
   
   switch(var1){
     case nClass.Int:
@@ -984,6 +1137,10 @@ Object orNum(Object v1_, Object v2_){
   int var1 = numClass(v1_);
   int var2 = numClass(v2_);
   
+  if(var1 == nClass.NAN || var2 == nClass.NAN){
+    return errorMSG_NaN;
+  }
+  
   switch(var1){
     case nClass.Int:
       switch(var2){
@@ -1112,6 +1269,10 @@ Object orNum(Object v1_, Object v2_){
 Object invertNum(Object v1_){
   int var1 = numClass(v1_);
   
+  if(var1 == nClass.NAN){
+    return errorMSG_NaN;
+  }
+  
   switch(var1){
     case nClass.Int:
           return ~(int)v1_;
@@ -1134,6 +1295,10 @@ Object invertNum(Object v1_){
 
 Object negateNum(Object v1_){
   int var1 = numClass(v1_);
+  
+  if(var1 == nClass.NAN){
+    return errorMSG_NaN;
+  }
   
   switch(var1){
     case nClass.Int:
@@ -1173,5 +1338,5 @@ Object changeNum(Object v1_, int type_){
           return (short)v1_;
   }
   
-  return "error";
+  return errorMSG_NaN;
 }
