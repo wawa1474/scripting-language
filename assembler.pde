@@ -14,37 +14,7 @@ class function{
 
 ArrayList<Object> assemble(Object[] code_){
   ArrayList<Object> output = new ArrayList<Object>();
-  //int ifDepth = 0;
-  //boolean lastIf = false;
-  //for(int i = 0; i < code_.length; i++){
-  //  if(code_[i] instanceof String){
-  //    if(code_[i].equals("if")){
-  //      ifDepth++;
-  //      lastIf = true;
-  //      numIf++;
-  //    }else{
-  //      if(lastIf == true){
-  //        if(code_[i].equals("end")){
-  //          ifDepth--;
-  //          ends.append(i);
-  //          elses.append(i);
-  //        }else if(code_[i].equals("else")){
-  //          elses.append(i);
-  //        }
-  //      }else{
-  //        if(code_[i].equals("end")){
-  //          ifDepth--;
-  //          ends.append(i);
-  //        }
-  //      }
-        
-  //    }
-  //  }
-  //}
-  //if(ifDepth != 0){
-  //  println("Too many 'ifs'");
-  //}
-  
+
   for(int i = 0; i < code_.length; i++){
     if(code_[i] instanceof String){
       String tmp = (String)code_[i];

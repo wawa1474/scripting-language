@@ -65,20 +65,6 @@ class interpreter{
         return;
       
       case op.If://if
-        //switch(getToken()){
-        //  case "<0":
-        //    //println("if <0");
-        //    if(popInt() >= 0){
-        //      //goto next end
-        //      regPC = elses.get(ifDepth);
-        //      lastIfTrue[ifDepth] = false;
-        //    }else{
-        //      lastIfTrue[ifDepth] = true;
-        //    }
-        //    //regPC++;
-        //    break;
-        //}
-        //if(conditionCheck() == true){
         if(popInt() == 1){
           lastIfTrue[ifDepth] = true;
         }else{
@@ -124,188 +110,15 @@ class interpreter{
         var1 = popInt();
         push(var1 / var2);
         return;
-      
-      //case op.Less://less than
-      //  conditionCheck("<");
-      //  break;
-      
-      //case op.Greater://greater than
-      //  conditionCheck(">");
-      //  break;
-      
-      //case op.Equal://equal
-      //  conditionCheck("==");
-      //  break;
-      
-      //case op.NotEqual://not equal
-      //  conditionCheck("!=");
-      //  break;
-      
-      //case op.LessEqual://less than or equal
-      //  conditionCheck("<=");
-      //  break;
-      
-      //case op.GreaterEqual://greater than or equal
-      //  conditionCheck(">=");
-      //  break;
     }
     
     conditionCheck(opcodes[ins_].name);
   }
-  //),
-  //new opcode(">", ),
-  //new opcode("==", ),
-  //new opcode("!=", ),
-  //new opcode("<=", ),
-  //new opcode(">=", 
+
   String getToken(){
     regPC++;
     return (String)codeToRun.get(regPC - 1);
   }
-  
-  //boolean conditionCheck(){
-  //  String token = getToken();
-  //  int var1;
-  //  int var2;
-    
-  //  int zeroIndex = token.indexOf("0");
-  //  if(zeroIndex != -1){
-  //    var1 = 0;
-  //    token = token.substring(0,zeroIndex);
-  //  }else{
-  //    var1 = popInt();
-  //  }
-  //  //var1 = popInt();
-  //  //switch(token){
-  //  //  case "<0":
-  //  //    if(var1 < 0){
-  //  //      return true;
-  //  //    }
-  //  //    break;
-        
-  //  //  case ">0":
-  //  //    if(var1 > 0){
-  //  //      return true;
-  //  //    }
-  //  //    break;
-        
-  //  //  case "==0":
-  //  //    if(var1 == 0){
-  //  //      return true;
-  //  //    }
-  //  //    break;
-        
-  //  //  case "!=0":
-  //  //    if(var1 != 0){
-  //  //      return true;
-  //  //    }
-  //  //    break;
-        
-  //  //  case "<=0":
-  //  //    if(var1 <= 0){
-  //  //      return true;
-  //  //    }
-  //  //    break;
-        
-  //  //  case ">=0":
-  //  //    if(var1 >= 0){
-  //  //      return true;
-  //  //    }
-  //  //    break;
-  //  //}
-  //  var2 = popInt();
-  //  switch(token){
-  //    case "<":
-  //      if(var2 < var1){
-  //        return true;
-  //      }
-  //      break;
-        
-  //    case ">":
-  //      if(var2 > var1){
-  //        return true;
-  //      }
-  //      break;
-        
-  //    case "==":
-  //      if(var2 == var1){
-  //        return true;
-  //      }
-  //      break;
-        
-  //    case "!=":
-  //      if(var2 != var1){
-  //        return true;
-  //      }
-  //      break;
-        
-  //    case "<=":
-  //      if(var2 <= var1){
-  //        return true;
-  //      }
-  //      break;
-        
-  //    case ">=":
-  //      if(var2 >= var1){
-  //        return true;
-  //      }
-  //      break;
-  //  }
-  //  return false;
-  //}
-  
-  //void conditionCheck(){
-  //  String token = getToken();
-  //  int var1;
-  //  int var2;
-    
-  //  int zeroIndex = token.indexOf("0");
-  //  if(zeroIndex != -1){
-  //    var1 = 0;
-  //    token = token.substring(0,zeroIndex);
-  //  }else{
-  //    var1 = popInt();
-  //  }
-  //  var2 = popInt();
-  //  switch(token){
-  //    case "<":
-  //      if(var2 < var1){
-  //        push(1);
-  //      }
-  //      break;
-        
-  //    case ">":
-  //      if(var2 > var1){
-  //        push(1);
-  //      }
-  //      break;
-        
-  //    case "==":
-  //      if(var2 == var1){
-  //        push(1);
-  //      }
-  //      break;
-        
-  //    case "!=":
-  //      if(var2 != var1){
-  //        push(1);
-  //      }
-  //      break;
-        
-  //    case "<=":
-  //      if(var2 <= var1){
-  //        push(1);
-  //      }
-  //      break;
-        
-  //    case ">=":
-  //      if(var2 >= var1){
-  //        push(1);
-  //      }
-  //      break;
-  //  }
-  //  push(0);
-  //}
   
   void conditionCheck(String con_){
     int var1= popInt();
